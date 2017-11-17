@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+use \Core\View;
 
 class Home extends \Core\Controller
 {
@@ -10,8 +11,8 @@ class Home extends \Core\Controller
     */
     protected function before()
     {
-        echo "(before) ";
-        return false;
+        // echo "this was ran before the used action ";
+        // return false;
     }
 
     /**
@@ -21,15 +22,18 @@ class Home extends \Core\Controller
     */
     protected function after()
     {
-        echo " (after)";
+        // echo " This method was ran after the used action";
     }
 
     /**
     * Show the index page
     * @return void
     */
-    public function indexAction()
+    public function index()
     {
-        echo "hello from the index action in the Home controller";
+        View::renderTemplate('Home/index.html', [
+            'name' => 'Levi',
+            'colors' => ['red', 'green', 'blue'] 
+        ]);
     }
 }
