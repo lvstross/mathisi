@@ -25,7 +25,8 @@ abstract class Controller
     }
 
     /**
-    *
+    * calling before and after methods on every controller that declares them
+    * 
     */
     public function __call($name, $args)
     {
@@ -48,7 +49,6 @@ abstract class Controller
     */
     protected function before()
     {
-
     }
 
     /**
@@ -57,8 +57,7 @@ abstract class Controller
     * @return void
     */
     protected function after()
-    {
-        
+    {   
     }
 
 }
