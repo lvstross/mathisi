@@ -1,8 +1,10 @@
 <?php
 namespace App\Controllers;
-use \Core\View;
 
-class Home extends \Core\Controller
+use \Core\View;
+use \Core\Controller as BaseController;
+
+class Home extends BaseController
 {
     /**
     * Before filter

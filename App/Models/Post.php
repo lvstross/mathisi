@@ -1,8 +1,11 @@
 <?php 
 namespace App\Models;
-use PDO;
 
-class Post extends \Core\Model
+use PDO;
+use \Core\Model as BaseModel;
+use \Core\QueryBuilder as QB;
+
+class Post extends BaseModel
 {
     /**
     * Get all the posts as an associative array
@@ -11,13 +14,19 @@ class Post extends \Core\Model
     */
     public static function getAll()
     {
-        try {
-            $conn = static::getDB();
-            $stm = $conn->query('SELECT id, title, content FROM posts ORDER BY created_at');
-            $results = $stm->fetchAll(PDO::FETCH_ASSOC);
-            return $results;
-        } catch(PDOException $e) {
-            echo $e->getMessage();
-        }
+        // $conn = static::getDB();
+        $qb = new QB;
+        $qb->conn = static::getDB();
+        $columns = ['id', 'title', 'content'];
+
+        // return $qb->raw("SELECT id,title,content FROM posts WHERE id=1 || title='Shark Week' ORDER BY created_at");
+
+        // or
+        
+        return $qb->selectMultiple('posts', $columns)
+                ->where('id', '=', '1')
+                ->or('title', '=', "'Shark Week'")
+                ->orderBy('created_at')
+                ->get();
     }
 }

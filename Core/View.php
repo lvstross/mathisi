@@ -1,6 +1,12 @@
 <?php 
 namespace Core;
 
+use \Twig_Environment as twig_env;
+use \Twig_Loader_filesystem as twig_system;
+
+/**
+* View Class
+*/
 class View
 {
     /**
@@ -32,8 +38,8 @@ class View
     {
         static $twig = null;
         if($twig === null) {
-            $loader = new \Twig_Loader_filesystem('../App/Views');
-            $twig = new \Twig_Environment($loader);
+            $loader = new twig_system('../App/Views');
+            $twig = new twig_env($loader);
         }
         echo $twig->render($template, $args);
     }

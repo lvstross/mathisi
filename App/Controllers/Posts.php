@@ -3,8 +3,9 @@ namespace App\Controllers;
 
 use \Core\View;
 use App\Models\Post;
+use \Core\Controller as BaseController;
 
-class Posts extends \Core\Controller
+class Posts extends BaseController
 {
     /**
     * Show the index page
