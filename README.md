@@ -17,7 +17,7 @@ root/ -- App/ -- Controllers/
       |_composer.json
       |_db.sql
       |_README.md
-``
+```
 
 ## Set Up
 The framework has an example application. This example app will give a base idea on how the framework works.
