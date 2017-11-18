@@ -7,16 +7,18 @@ root/ -- App/ -- Controllers/
       |      |__ Models/
       |      |__ Views/
       |      |__ Config.php
+      |
       |_ Core/ -- Controller.php
       |      |__ Model.php
       |      |__ QueryBuilder.php
       |      |__ Router.php
       |      |__ View.php
+      |
       |_ public/ -- index.php
       |_ Routes/ -- routes.php
-      |_composer.json
-      |_db.sql
-      |_README.md
+      |_ composer.json
+      |_ db.sql
+      |_ README.md
 ```
 
 ## Set Up
