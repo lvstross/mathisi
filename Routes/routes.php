@@ -1,17 +1,23 @@
 <?php 
+use Core\Router as Router;
 
-$router = new Core\Router();
+$router = new Router();
 
-// Flexable Routes 
+// Variable Pattern Routes
 $router->add('{controller}/{action}'); // - /posts/edit 
-// Custom Routes: {name:regex}
+// Custom Variable Routes: {name:regex}
 $router->add('{controller}/{id:\d+}/{action}'); // - /posts/23/edit
 $router->add('{controller}/{name:[a-z]+}/{id:\d+}/{action}'); // - /posts/levi/23/add 
-// Fixed Routes with optional parameters
+// Routes with parameters
 $router->add('/', ['controller' => 'Home', 'action' => 'index']);
 $router->add('/posts', ['controller' => 'Posts', 'action' => 'addNew']);
-$router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
+$router->add('/admin/users/index', [
+    'controller' => 'Users', 
+    'action' => 'index', 
+    'namespace' => 'Admin'
+]);
 
+// Dispatch Current Route
 $router->dispatch($_SERVER['REQUEST_URI']);
 
 

@@ -1,7 +1,9 @@
 <?php 
 namespace App\Controllers\Admin;
+use \Core\Controller as BaseController;
 
-class Users extends \Core\Controller
+
+class Users extends BaseController
 {
     /**
     * Before filter
@@ -17,7 +19,7 @@ class Users extends \Core\Controller
     * Show the index page
     * @return void
     */
-    public function indexAction()
+    public function index()
     {
         echo "User admin index";
     }
