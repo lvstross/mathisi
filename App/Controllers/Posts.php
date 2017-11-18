@@ -14,9 +14,9 @@ class Posts extends BaseController
     public function index()
     {
         $posts = Post::getAll();
-       View::renderTemplate('Posts/index.html', [
+        View::renderTemplate('Posts/index.html', [
             'posts' => $posts
-       ]);
+        ]);
     }
 
     /**

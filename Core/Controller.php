@@ -42,6 +42,17 @@ abstract class Controller
     }
 
     /**
+    * Dump and Die
+    *
+    * @return dumped variable
+    */
+    public function dd($var)
+    {
+        var_dump($var);
+        die();
+    }
+
+    /**
     * Before filter - called before an action method.
     *
     * @return void

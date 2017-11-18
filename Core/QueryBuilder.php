@@ -28,13 +28,17 @@ class QueryBuilder
     */
     public function raw($str)
     {
-        try{
-            $this->query = $str;
-            $stm = $this->conn->query($this->query);
-            $results = $stm->fetchAll(PDO::FETCH_ASSOC);
-            return $results;
-        } catch (PDOException $e) {
-            echo $e->getMessage();
+        if(preg_match('/drop/i', $str)){
+            return ['message' => 'Query rejected!'];
+        }else{
+            try{
+                $this->query = $str;
+                $stm = $this->conn->query($this->query);
+                $results = $stm->fetchAll(PDO::FETCH_ASSOC);
+                return $results;
+            } catch (PDOException $e) {
+                echo $e->getMessage();
+            }
         }
     }
 
@@ -86,8 +90,58 @@ class QueryBuilder
     }
 
     /**
+    * Where Between
+    *
+    * @param String Column name
+    * @param String Range Start
+    * @param String Range End
+    */
+    public function whereBetween($column, $start, $end)
+    {
+        $this->query .= " WHERE " . $column . " BETWEEN " . $start . " AND " . $end;
+        return $this;
+    }
+
+    /**
+    * Where In
+    *
+    * @param String Column name
+    * @param Array or another select statement
+    * @param qualifier ARRAY_VALUES | SELECT_STATEMENT
+    */
+    public function whereIn($column, $value, $qualifier)
+    {
+        if($qualifier === "ARRAY_VALUES"){
+            $this->query .= " WHERE " . $column . " IN (" . $this->makeColumns($value) . ")";
+        } elseif ($qualifier === "SELECT_STATEMENT") {
+            $this->query .= " WHERE " . $column . " IN (" . $value . ")";
+        }
+        return $this;
+    }
+
+    /**
+    * Where Not In
+    *
+    * @param String Column name
+    * @param Array or another select statement
+    * @param qualifier ARRAY_VALUES | SELECT_STATEMENT
+    */
+    public function whereNotIn($column, $value, $qualifier)
+    {
+        if($qualifier === "ARRAY_VALUES"){
+            $this->query .= " WHERE " . $column . " NOT IN (" . $this->makeColumns($value) . ")";
+        } elseif ($qualifier === "SELECT_STATEMENT") {
+            $this->query .= " WHERE " . $column . " NOT IN (" . $value . ")";
+        }
+        return $this;
+    }
+
+    /**
     * AND Operator
     *
+    * @param String Column name
+    * @param String Operator
+    * @param String Qualifier
     * @return $this
     */
     public function and($column, $operator='', $qualifier='')
@@ -99,11 +153,26 @@ class QueryBuilder
     /**
     * OR Operator
     *
+    * @param String Column name
+    * @param String Operator
+    * @param String Qualifier
     * @return $this
     */
     public function or($column, $operator='', $qualifier='')
     {
         $this->query .= " || " . $column . $operator . $qualifier;
+        return $this;
+    }
+
+    /**
+    * ASC or DESC
+    *
+    * @param String ASC|DESC
+    * @return $this
+    */
+    public function sortBy($sort)
+    {
+        $this->query .= " $sort";
         return $this;
     }
 
@@ -120,6 +189,18 @@ class QueryBuilder
     }
 
     /**
+    * Results AS
+    *
+    * @param String 
+    * @return $this
+    */
+    public function collectAs($name)
+    {
+        $this->query .= " AS $name";
+        return $this;
+    }
+
+    /**
     * Array to columns String Converter
     *
     * @param array
@@ -132,7 +213,7 @@ class QueryBuilder
             if($i === (count($columnsArr) - 1)){
                 $string .= $columnsArr[$i];
             } else {
-                $string .= $columnsArr[$i] . ',';
+                $string .= $columnsArr[$i] . ', ';
             }
         }
         return $string;
@@ -143,9 +224,10 @@ class QueryBuilder
     *
     * @return array
     */
-    public function get()
+    public function all()
     {
         try{
+            echo $this->query;
             $stm = $this->conn->query($this->query);
             $results = $stm->fetchAll(PDO::FETCH_ASSOC);
             return $results;
