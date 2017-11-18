@@ -8,7 +8,7 @@ root/ -- App/ -- Controllers/
       |      |__ Views/
       |      |__ Config.php
       |
-      |_ Core/ -- Controller.php
+      |_ Core/-- Controller.php
       |      |__ Model.php
       |      |__ QueryBuilder.php
       |      |__ Router.php
