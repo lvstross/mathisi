@@ -1,6 +1,23 @@
 <h1 align="center">PHP MVC Framework</h1>
 Work in progress
 
+Folder Structure
+```bash
+root/ -- App/ -- Controllers/
+      |      |__ Models/
+      |      |__ Views/
+      |      |__ Config.php
+      |_ Core/ -- Controller.php
+      |      |__ Model.php
+      |      |__ QueryBuilder.php
+      |      |__ Router.php
+      |      |__ View.php
+      |_ public/ -- index.php
+      |_ Routes/ -- routes.php
+      |_composer.json
+      |_db.sql
+      |_README.md
+``
 
 ## Set Up
 The framework has an example application. This example app will give a base idea on how the framework works.
