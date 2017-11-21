@@ -9,6 +9,8 @@ root/ -- App/ -- Controllers/
       |      |__ Config.php
       |
       |_ Core/-- Controller.php
+      |      |__ Mail.php
+      |      |__ Config.php
       |      |__ Model.php
       |      |__ QueryBuilder.php
       |      |__ Router.php
