@@ -22,14 +22,24 @@ class Posts extends BaseController
     }
 
     /**
-    * Show the add new page
+    * Add a new post
     * @return void
     */
-    public function addNew()
+    public function store()
     {   
-        $subject = 'Learning How To Use MVC-Mailing';
-        $body = "<h1>Hello there!</h1><p>This email is coming from the addnew function in the posts controller.</p>";
-        $addresses = [''];
-        // Mail::newEmail($subject, $body, $addresses);
+        $result = Post::addPost();
+        View::renderTemplate('Posts/index.html', [
+            'result' => $result
+        ]);
+    }
+
+    /**
+    * API Route for getting the posts
+    * @return json
+    */
+    public function all()
+    {
+        $results = Post::getAll();
+        echo json_encode($results);
     }
 }

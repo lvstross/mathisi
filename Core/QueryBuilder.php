@@ -19,6 +19,17 @@ class QueryBuilder
     */
     public $conn;
 
+    /**
+    * Values to be stored for preparted statments
+    * @var Array
+    */
+    protected $prepValues = [];
+
+    /**
+    * Placeholders to be stored for preparted statments
+    * @var Array
+    */
+    protected $prepPlaceHolders = [];
 
     /**
     * Raw Query 
@@ -74,6 +85,29 @@ class QueryBuilder
         $this->query .= $this->makeColumns($columns);
         $this->query .= " FROM $table";
         return $this;
+    }
+
+    /**
+    * Insert Statements with Multiple columns
+    *
+    * @param string Database Table
+    * @param array Columns to insert into
+    *
+    * @return $this
+    */
+    public function insert($table, $columns=[], $values=[])
+    {
+        // Constructiong the select statement
+        $this->query = "INSERT INTO $table(";
+        $this->query .= $this->makeColumns($columns);
+        $this->query .= ") VALUES(";
+        // Create place holders, concatinate and store them
+        $this->query .= $this->makePreparedString($values);
+        $this->makePreparedArray($values);
+        $this->prepValues = $values;
+        // Continue building query string
+        $this->query .= ")";
+        $this->store();
     }
 
     /**
@@ -220,6 +254,40 @@ class QueryBuilder
     }
 
     /**
+    * Array to columns String Converter for Prepared statments
+    *
+    * @param array
+    * @return string
+    */
+    private function makePreparedString($columnsArr)
+    {
+        $string = '';
+        for($i=0; $i < count($columnsArr); $i++){
+            if($i === (count($columnsArr) - 1)){
+                $string .= ":prep$i";
+            } else {
+                $string .= ":prep$i" . ', ';
+            }
+        }
+        return $string;
+    }
+
+    /**
+    * Array of params for Prepared statments
+    *
+    * @param array
+    * @return string
+    */
+    private function makePreparedArray($columnsArr)
+    {
+        $prepArray = [];
+        for($i=0; $i < count($columnsArr); $i++){
+            array_push($prepArray, ":prep$i");
+        }
+        $this->prepPlaceHolders = $prepArray;
+    }
+
+    /**
     * Fetch the query
     *
     * @return array
@@ -227,12 +295,39 @@ class QueryBuilder
     public function all()
     {
         try{
-            echo $this->query;
             $stm = $this->conn->query($this->query);
             $results = $stm->fetchAll(PDO::FETCH_ASSOC);
             return $results;
         } catch (PDOException $e) {
             echo $e->getMessage();
         }
+    }
+
+    /**
+    * Bind params and Exicute Prepared Statment
+    *
+    * @return void
+    */
+    private function store()
+    {
+        try{
+            $stm = $this->conn->prepare($this->query);
+            for($i=0;$i<count($this->prepValues);$i++){
+                $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i]);
+            }
+            $stm->execute();
+            return "Store Success!!";
+        } catch (PDOException $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    /**
+    * Show Query String
+    * @return string
+    */
+    public function queryString()
+    {
+        return $this->query;
     }
 }

@@ -16,10 +16,16 @@ class Post extends BaseModel
     {
         $qb = new QB;
         $qb->conn = static::getDB();
-        $columns = ['id', 'title', 'content'];
-        
-        return $qb->selectMultiple('posts', $columns)
-                ->whereNotIn('id', ['2', '3'], 'ARRAY_VALUES')
-                ->all();
+        return $qb->select('posts', '*')->all();
+    } 
+
+    public static function addPost()
+    {
+        $qb = new QB;
+        $qb->conn = static::getDB();
+        $columns = ['title', 'content'];
+        $values = ['Ravens', 'They eat anything!'];
+
+        return $qb->insert('posts', $columns, $values);
     }
 }
