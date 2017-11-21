@@ -1,6 +1,8 @@
 <?php
 namespace Core;
 
+use \Core\Mail;
+
 /**
 * Base Controller
 */

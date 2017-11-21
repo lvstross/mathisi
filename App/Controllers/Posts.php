@@ -1,8 +1,10 @@
 <?php
 namespace App\Controllers;
 
-use \Core\View;
+
 use App\Models\Post;
+use \Core\View;
+use \Core\Mail;
 use \Core\Controller as BaseController;
 
 class Posts extends BaseController
@@ -24,7 +26,10 @@ class Posts extends BaseController
     * @return void
     */
     public function addNew()
-    {
-        echo "Hello from the addNew action in the Posts controller!";
+    {   
+        $subject = 'Learning How To Use MVC-Mailing';
+        $body = "<h1>Hello there!</h1><p>This email is coming from the addnew function in the posts controller.</p>";
+        $addresses = [''];
+        // Mail::newEmail($subject, $body, $addresses);
     }
 }
