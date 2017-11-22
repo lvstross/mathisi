@@ -3,6 +3,29 @@
 <head>
     <title>{% block title %}{% endblock %}</title>
     <style>
+        body {
+            font-family: Helvetica, Georgia, sans serif;
+        }
+        .main {
+            width: 100%;
+        }
+        .code {
+            background: #25373f;
+            padding: 10px;
+            color: #fff;
+            overflow: scroll;
+        }
+        .line {
+            margin-right: 5px;
+            padding-right: 8px;
+        }
+        .light-blue { color: #89ddff; }
+        .red { color: #c66c78; }
+        .yellow { color: #ffcb66; }
+        .purple { color: #af8dea; }
+        .lime-green { color: #a1e48d; }
+        .ocean-blue { color: #82aaf3; }
+        .grey { color: #506a77; }
         .error-h1 {
             text-align:center;
             color:#fff;
@@ -21,6 +44,26 @@
             border-radius:0 0 10px 10px;
             padding:20px;
             margin-top:0px;
+        }
+        .home-h1 {
+            text-align:center;
+            color:#fff;
+            background-color:#000;
+            margin-bottom:0px;
+            border-radius:10px 10px 0 0;
+            padding:10px;   
+        }
+        .home-div {
+            background-color:#d6cfcf;
+            border-radius:0 0 10px 10px;
+            padding:20px;
+            margin-top:0px;
+        }
+        .banner {
+            background-color: #fff;
+            text-align: center;
+            border-radius: 10px;
+            padding: 5px;
         }
     </style>
 </head>
