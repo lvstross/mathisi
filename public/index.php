@@ -1,11 +1,5 @@
 <?php 
 /**
-* Composer Autoloader
+* Require the bootstrap file that runs the framework
 */
-require_once dirname(__DIR__) . '/vendor/autoload.php';
-
-
-/**
-* Routes
-*/
-require_once dirname(__DIR__) . '/Routes/routes.php';
+require_once dirname(__DIR__) . '/Bootstrap/bootstrap.php';
