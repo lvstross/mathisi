@@ -113,10 +113,10 @@ class Router
                     throw new \Exception("Method $action (in controller $controller) not found");
                 }
             } else {
-                echo "Controller class $controller not found";
+                throw new \Exception("Controller class $controller not found");
             }
         } else {
-            echo "URL does not match: $url";
+            throw new \Exception("No route matches '$url'.", 404);
         }
     }
 
