@@ -2,13 +2,29 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
+    <style>
+        .error-h1 {
+            text-align:center;
+            color:#fff;
+            background-color:#dd4040;
+            margin-bottom:0px;
+            border-radius:10px;
+            padding:10px;
+        }
+        .error-h2 {
+            font-size:60px;
+            margin:0;
+        }
+        .error-div {
+            background-color:#d6cfcf;
+            text-align:center;
+            border-radius:0 0 10px 10px;
+            padding:20px;
+            margin-top:0px;
+        }
+    </style>
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a> | 
-        <a href="/posts/index">Posts</a>
-    </nav>
-
     {% block body %}
     {% endblock %}
 </body>
