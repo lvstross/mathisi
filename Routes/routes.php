@@ -20,16 +20,18 @@ $router->add('/admin/users/index', [
 
 // Dispatch Current Route
 $router->dispatch($_SERVER['REQUEST_URI']);
-var_dump($_SERVER['REQUEST_METHOD']);
 
 
 
-//Display the routing table and show the matched routes
+// Uncomment to display the routing table and show the matched routes
 /*
 echo '<pre>';
 echo htmlspecialchars(print_r($router->getRoutes(), true));
 echo '</pre>';
+*/
 
+// Uncomment to show the current routes controller|action|(and,or) namespace
+/*
 $url = $_SERVER['REQUEST_URI'];
 if($router->match($url)) {
     echo '<pre>';
