@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block title %}Register{% endblock %}
+{% block body %}
+    <div class="form">
+        <h1 style="text-align: center;">Register</h1>
+        <form method="post" action="/register/create">
+            <div>
+                <label for="name">Name:</label>
+                <input id="name" type="text" name="name">
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input id="email" type="email" name="email">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input id="password" type="password" name="password">
+            </div>
+            <div>
+                <label for="confpassword">Confirm Password:</label>
+                <input id="confpassword" type="password" name="confpassword">
+            </div>
+            <button class="auth-btn" type="submit">Register</button>
+        </form>
+    </div>
+{% endblock %}

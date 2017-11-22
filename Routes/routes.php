@@ -3,19 +3,21 @@ use Core\Router as Router;
 
 $router = new Router();
 
-// Variable Pattern Routes
-$router->add('{action/{controller}'); // - /posts/edit 
-// Custom Variable Routes: {name:regex}
-$router->add('{controller}/{id:\d+}/{action}'); // - /posts/23/edit
-$router->add('{controller}/{name:[a-z]+}/{id:\d+}/{action}'); // - /posts/levi/23/add 
-// Routes with parameters
+
 $router->add('/', ['controller' => 'Home', 'action' => 'index']);
 $router->add('/posts', ['controller' => 'Posts', 'action' => 'index']);
 $router->add('/api/posts', ['controller' => 'Posts', 'action' => 'all']);
-$router->add('/admin/users/index', [
-    'controller' => 'Users', 
-    'action' => 'index', 
-    'namespace' => 'Admin'
+
+// Auth routes
+$router->add('/register', [
+    'controller' => 'Register',
+    'action' => 'form',
+    'namespace' => 'auth'
+]);
+$router->add('/register/create', [
+    'controller' => 'Register',
+    'action' => 'create',
+    'namespace' => 'auth'
 ]);
 
 // Dispatch Current Route
