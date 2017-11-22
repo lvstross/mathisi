@@ -32,4 +32,10 @@ class Config
     * @var string
     */
     const DB_PASSWORD = '';
+
+    /**
+    * Show or hide error messages on screen
+    * @var boolean
+    */
+    const SHOW_ERRORS = true;
 }
