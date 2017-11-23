@@ -25,7 +25,23 @@ class Register extends BaseController
     public function create()
     {
         $user = new User($_POST);
-        $user->save();
-        echo "Successfully added user";
+        if($user->save()){
+            header('Location: http://' . $_SERVER['HTTP_HOST'] . '/register/success', true, 303);
+            exit;
+        } else {
+            View::renderTemplate('Auth/register.html', [
+                'user' => $user
+            ]);
+        }
+    }
+
+    /**
+    * Success Action
+    *
+    * @return void
+    */
+    public function success()
+    {
+        View::renderTemplate('Auth/success.html');
     }
 }

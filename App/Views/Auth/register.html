@@ -3,15 +3,25 @@
 {% block title %}Register{% endblock %}
 {% block body %}
     <div class="form">
+        <div class="error-message">
+            {% if user.errors is not empty %}
+                <p>Errors:</p>
+                <ul>
+                    {% for error in user.errors %}
+                        <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </div>
         <h1 style="text-align: center;">Register</h1>
         <form method="post" action="/register/create">
             <div>
                 <label for="name">Name:</label>
-                <input id="name" type="text" name="name">
+                <input id="name" type="text" name="name" value="{{ user.name }}">
             </div>
             <div>
                 <label for="email">Email:</label>
-                <input id="email" type="email" name="email">
+                <input id="email" type="email" name="email" value="{{ user.email }}">
             </div>
             <div>
                 <label for="password">Password:</label>

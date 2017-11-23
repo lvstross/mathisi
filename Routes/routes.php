@@ -19,7 +19,11 @@ $router->add('/register/create', [
     'action' => 'create',
     'namespace' => 'auth'
 ]);
-
+$router->add('/register/success', [
+    'controller' => 'Register',
+    'action' => 'success',
+    'namespace' => 'auth'
+]);
 // Dispatch Current Route
 $router->dispatch($_SERVER['REQUEST_URI']);
 
