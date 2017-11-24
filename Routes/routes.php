@@ -8,22 +8,8 @@ $router->add('/', ['controller' => 'Home', 'action' => 'index']);
 $router->add('/posts', ['controller' => 'Posts', 'action' => 'index']);
 $router->add('/api/posts', ['controller' => 'Posts', 'action' => 'all']);
 
-// Auth routes
-$router->add('/register', [
-    'controller' => 'Register',
-    'action' => 'form',
-    'namespace' => 'auth'
-]);
-$router->add('/register/create', [
-    'controller' => 'Register',
-    'action' => 'create',
-    'namespace' => 'auth'
-]);
-$router->add('/register/success', [
-    'controller' => 'Register',
-    'action' => 'success',
-    'namespace' => 'auth'
-]);
+require 'auth_routes.php';
+
 // Dispatch Current Route
 $router->dispatch($_SERVER['REQUEST_URI']);
 

@@ -100,4 +100,30 @@ class User extends BaseModel
             $this->errors[] = "Sorry! This email has already been taken.";
         }
     }
+
+    /**
+    * Authenticate user
+    *
+    * @return void
+    */
+    public function authenticate()
+    {
+        $e = "'" . $this->email . "'";
+        $p = "'" . $this->password . "'";
+        $qb = new QB;
+        $qb->conn = static::getDB();
+        $results = $qb->select('users', '*')
+                      ->where('email', '=', $e)
+                      ->all();
+        if(count($results) > 0){
+            if(password_verify($this->password, $results[0]['password_hash'])){
+                return true;
+            }else{
+                $this->errors[] = "Your password does not match your email.";
+            }
+        }else{
+            $this->errors[] = "Sorry, these credentials were not found.";
+        }
+        return false;
+    }
 }
