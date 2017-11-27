@@ -2,12 +2,12 @@
 namespace App\Controllers;
 
 use App\Models\Post;
-use App\Controllers\Auth\Authenticated;
+use App\Controllers\Auth\AuthController;
 use \Core\View;
 use \Core\Mail;
 use \Core\Auth;
 
-class Posts extends Authenticated
+class Posts extends AuthController
 {
     /**
     * Show the index page

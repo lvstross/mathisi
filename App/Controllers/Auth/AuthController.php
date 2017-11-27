@@ -7,7 +7,7 @@ namespace App\Controllers\Auth;
 * 
 * Apart of the authentication system
 */
-abstract class Authenticated extends \Core\Controller
+abstract class AuthController extends \Core\Controller
 {
     /**
     * Run middleware before every [method]Action call
