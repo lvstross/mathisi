@@ -3,8 +3,14 @@ namespace App\Controllers\Auth;
 
 use \Core\View;
 use \App\Models\User;
+use \Core\Auth;
 use \Core\Controller as BaseController;
 
+/**
+* App Login Class
+* 
+* Apart of the authentication system
+*/
 class Login extends BaseController
 {
     /**
@@ -25,12 +31,22 @@ class Login extends BaseController
     {
         $user = new User($_POST);
         if($user->authenticate()){
-            header('Location: http://' . $_SERVER['HTTP_HOST'] . '/', true, 303);
-            exit;
+            $this->redirect(Auth::getReturnToPage());
         } else {
             View::renderTemplate('Auth/login.html', [
                 'user' => $user
             ]);
         }
+    }
+
+    /**
+    * Log the user out
+    *
+    * @return void
+    */
+    public function logout()
+    {
+        Auth::destroySession();
+        $this->redirect('/');
     }
 }
