@@ -1,4 +1,5 @@
 <?php 
+
 /**
 * Require the bootstrap file that runs the framework
 */
