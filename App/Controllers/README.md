@@ -11,7 +11,6 @@ The BaseController may be used when all your methods require no authentication o
 your methods require authentication. A controller file can be set up like so.
 
 ```php
-<?php
 
 namespace App\Controllers;
 
@@ -29,7 +28,6 @@ class Home extends BaseController
         View::renderTemplate('Home/index.html');
     }
 }
-?>
 ```
 
 #### Calling before and after methods
@@ -38,7 +36,6 @@ Simply add these methods to your controller and include the word 'Action' after 
 to call the before and after methods. 
 
 ```php
-<?php
 
 class Home extends BaseController
 {
@@ -57,8 +54,6 @@ class Home extends BaseController
         echo 'Called after index view is loaded!';
     }
 }
-
-?>
 ```
 
 #### Dump and Die
@@ -67,7 +62,6 @@ If at anytime in your controller you wish to dump a variable and kill the progra
 method. Call it on the controller instance at anytime.
 
 ```php
-<?php
 
 class Home extends BaseController
 {
@@ -83,7 +77,6 @@ class Home extends BaseController
         View::renderTemplate('Home/index.html');
     }
 }
-?>
 ```
 
 #### Redirecting
@@ -138,7 +131,6 @@ this controller simply allows you to do so call methods without having to declar
 everytime. An AuthController can be created like so.
 
 ```php
-<?php
 namespace App\Controllers;
 
 use Core\View;
