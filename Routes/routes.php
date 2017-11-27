@@ -1,17 +1,35 @@
 <?php 
 use Core\Router as Router;
+/**
+* All routes must either be defined in this file or required in this file
+*/
 
+// Router instance
 $router = new Router();
 
-
+/**
+* Default Routes for Docs and Home page
+*/
 $router->add('/', ['controller' => 'Home', 'action' => 'index']);
-$router->add('/posts', ['controller' => 'Posts', 'action' => 'index']);
-$router->add('/api/posts', ['controller' => 'Posts', 'action' => 'all']);
+$router->add('/docs', ['controller' => 'Home', 'action' => 'docs']);
 
+
+/**
+* Routes defined for default app
+*/
+require 'post_routes.php';
+
+/**
+* Routes defined for authentication system
+*/
 require 'auth_routes.php';
 
-// Dispatch Current Route
+/**
+* Dispatch Current Route
+*/
 $router->dispatch($_SERVER['REQUEST_URI']);
+
+
 
 
 
