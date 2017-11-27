@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="main">
+    <h1 class="home-h1">Documentation</h1>
+    <div class="home-div">
+        <h2 class="banner">For Starters</h2>
+        <p>
+            The default templating engine for this framework is <a href="https://twig.symfony.com/">Twig</a>. 
+            You'll find comments all over the code to help you understand how to use this framework. If you want a 
+            little more detail, feel free to check out the docs <a href="https://github.com/lvstross/mvc-framework">here</a>.
+        </p>
+        <h2 class="banner">Front Controller &amp; Bootstrap File</h2>
+        <p>
+            Being an MVC framework, the entire application is loaded through the front controller 'public/index.php' file. However, 
+            in this file, you will not see any of the required files that run the application. All of that information is loaded in the 
+            'Bootstrap/bootsrap.php' file. There, we are doing three things: 
+        </p>
+        <ol>
+            <li>Requiring the composer autoload file</li> 
+            <li>Requiring the error/exception classes along with the display error configuration</li>
+            <li>Requiring the routes file</li>
+        </ol>
+        <h2 class="banner">Routing</h2>
+        <p>
+            All routes are stored in 'Routes/routes.php'. As mentioned before, this file is already bootstraped by the application. If 
+            you desire to place larger groups of routes in their own files, simply require them here to be loaded into the application. 
+            There are three different kinds of routes you can define.
+        </p>
+        <ol>
+            <li>Variable Pattern Routes</li>
+            <li>Custom Varaible Pattern Routes</li>
+            <li>Fixed Routes</li>
+        </ol>
+        <h3>Varibale Pattern Routes and Custom Routes:</h3>
+        <p>
+            The first two kinds of routes follow a 'controller' and 'action' definition pattern. These two key words must be used when 
+            defining were in the route your controller name is and where your action name is. If the router can't find a controller or an 
+            action that have the given names in the route, it will throw an error. Since variable routes are boiled down to regular expressions, 
+            you can add your own variables to your routes by giving them a variable name to capture as well as a regular expression pattern to 
+            follow. This is especially useful for when you want to capture the 'id' in a given route. When building custom variables, only pass 
+            basic expression as the delimiters, forward slashes and string encapsulators are added to your expression. 
+        </p>
+        <h3>Fixed Routes:</h3>
+        <p>
+            The last kind of route is the fixed route. The 'add' method on the Router class can accept up to two parameters: the first being the 
+            route which is required, be it pattern or fixed; while the second is optional. The second parameter is an optional associative array where 
+            you can define your controllers and actions. If this second parameter is not used, the fixed route will determine what controller and 
+            action is used (controller first, action second); however, if the route doesn't have a least two names (e.g. '/posts/add') an error will be thrown as the router is trying 
+            to map a controller and an action to the route using the url itself. 
+        </p>
+        <pre class="code">
+<span class="light-blue">&lt;?php</span>
+
+<span class="purple">use</span> <span class="yellow">Core</span><span class="light-blue">\</span><span class="yellow">Router</span> <span class="purple">as</span> <span class="yellow">Router</span><span class="light-blue">;</span>
+
+<span class="light-blue">$</span>router <span class="light-blue">=</span> <span class="purple">new</span> <span class="yellow">Router</span><span class="light-blue">();</span>
+
+<span class="grey">
+/** 
+* Variable Pattern Routes:
+* Routes that follow a controller/action pattern.
+*/
+</span>
+<span class="light-blue">$</span>router<span class="light-blue">-></span><span class="ocean-blue">add</span><span class="light-blue">('</span><span class="lime-green">{controller}/{action}</span><span class="light-blue">');</span> <span class="grey">// - /posts/edit</span>
+
+<span class="grey">
+/**
+* Custom Variable Routes: {name:regex}
+* Routes that still follow a controller/action pattern but with extra parameters 
+* passed in for controller use. Only simple patterns are needed. Do not add your 
+* own global delimiters, the starting and ending forward slashes and the ^$ for 
+* start and end of string.
+*/
+</span>
+<span class="light-blue">$</span>router<span class="light-blue">-></span><span class="ocean-blue">add</span><span class="light-blue">('</span><span class="lime-green">{controller}/{id:\d+}/{action}</span><span class="light-blue">');</span> <span class="grey">// - /posts/23/edit</span>
+
+<span class="light-blue">$</span>router<span class="light-blue">-></span><span class="ocean-blue">add</span><span class="light-blue">('</span><span class="lime-green">{controller}/{name:[a-z]+}/{id:\d+}/{action}</span><span class="light-blue">');</span> <span class="grey">// - /posts/levi/23/add</span>
+
+<span class="grey">
+/**
+* Fixed Routes:
+* If you want to strickly define your routes, you can do so without variable patterns.the 
+* optional second parameter to the 'add' method is an associative array. If you decide to 
+* go with this option be sure to have 'controller' and 'action' as your keys. 
+*/
+</span>
+<span class="light-blue">$</span>router<span class="light-blue">-></span><span class="ocean-blue">add</span><span class="light-blue">('</span><span class="lime-green">/</span><span class="light-blue">',</span> <span class="light-blue">['</span><span class="lime-green">controller</span><span class="light-blue">' => '</span><span class="lime-green">Home</span><span class="light-blue">', '</span><span class="lime-green">action</span><span class="light-blue">' => '</span><span class="lime-green">index</span><span class="light-blue">']);</span>
+
+<span class="light-blue">$</span>router<span class="light-blue">-></span><span class="ocean-blue">add</span><span class="light-blue">('</span><span class="lime-green">/posts</span><span class="light-blue">',</span> <span class="light-blue">['</span><span class="lime-green">controller</span><span class="light-blue">' => '</span><span class="lime-green">Posts</span><span class="light-blue">', '</span><span class="lime-green">action</span><span class="light-blue">' => '</span><span class="lime-green">index</span><span class="light-blue">']);</span>
+
+<span class="light-blue">$</span>router<span class="light-blue">-></span><span class="ocean-blue">add</span><span class="light-blue">('</span><span class="lime-green">/api/posts</span><span class="light-blue">',</span> <span class="light-blue">['</span><span class="lime-green">controller</span><span class="light-blue">' => '</span><span class="lime-green">Posts</span><span class="light-blue">', '</span><span class="lime-green">action</span><span class="light-blue">' => '</span><span class="lime-green">all</span><span class="light-blue">']);</span>
+
+<span class="grey">
+/**
+* Namespaces:
+* Since the routing engine assumes that your controllers live in the 'App/Controllers' 
+* directory, if you desire to make sub-folders in this directory, be sure to add the 
+* namespace you've added for these controllers in the 'namespace' key part of the 
+* optional associative array.
+*/
+</span>
+<span class="light-blue">$</span>router<span class="light-blue">-></span><span class="ocean-blue">add</span><span class="light-blue">('</span><span class="lime-green">/admin/users/index</span><span class="light-blue">',</span> <span class="light-blue">[</span>
+    <span class="light-blue">'</span><span class="lime-green">controller</span><span class="light-blue">' => '</span><span class="lime-green">Users</span><span class="light-blue">',</span>
+    <span class="light-blue">'</span><span class="lime-green">action</span><span class="light-blue">' => '</span><span class="lime-green">index</span><span class="light-blue">',</span>
+    <span class="light-blue">'</span><span class="lime-green">namespace</span><span class="light-blue">' => '</span><span class="lime-green">Admin</span><span class="light-blue">'</span>
+<span class="light-blue">]);</span>
+
+<span class="grey"> // Dispatch Current Route</span>
+<span class="light-blue">$</span>router<span class="light-blue">-></span><span class="ocean-blue">dispatch</span><span class="light-blue">($</span>_SERVER<span class="light-blue">['</span><span class="lime-green">REQUEST_URI</span><span class="light-blue">']);</span>
+
+<span class="light-blue">?&gt;</span>
+        </pre>
+        <h2 class="banner"> More docs coming soon</h2>
+    </div>
+</div>
+{% endblock %}
