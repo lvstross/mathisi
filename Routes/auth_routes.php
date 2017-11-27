@@ -1,6 +1,9 @@
 <?php
 
 //  ===== Auth routes =====
+/**
+* These routes are added for the authentication system.
+*/
 
 // Show the registration page
 $router->add('/register', [
@@ -30,5 +33,11 @@ $router->add('/login', [
 $router->add('/login/login', [
     'controller' => 'Login',
     'action' => 'login',
+    'namespace' => 'auth'
+]);
+// Log the user out
+$router->add('/login/logout', [
+    'controller' => 'login',
+    'action' => 'logout',
     'namespace' => 'auth'
 ]);
