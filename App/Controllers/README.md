@@ -4,7 +4,7 @@ All controllers must be places in the 'App/Controllers' directory. There are two
 controllers available:
 
 1. [BaseController](https://github.com/lvstross/mvc-framework/tree/master/Core/Controller.php)
-2. [AuthController](https://github.com/lvstross/mvc-framework/tree/master/App/Controllers/Auth/Authenticated.php)
+2. [AuthController](https://github.com/lvstross/mvc-framework/tree/master/App/Controllers/Auth/AuthController.php)
 
 ### BaseController
 The BaseController may be used when all your methods require no authentication or when only some of 
