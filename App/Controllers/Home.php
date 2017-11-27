@@ -1,9 +1,9 @@
 <?php
 namespace App\Controllers;
 
-use \Core\View;
-use \Core\Auth;
-use \Core\Controller as BaseController;
+use Core\View;
+use Core\Auth;
+use Core\Controller as BaseController;
 
 class Home extends BaseController
 {

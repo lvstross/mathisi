@@ -2,9 +2,9 @@
 namespace App\Models;
 
 use PDO;
-use \Core\Auth;
-use \Core\Model as BaseModel;
-use \Core\QueryBuilder as QB;
+use Core\Auth;
+use Core\Model as BaseModel;
+use Core\QueryBuilder as QB;
 
 /**
 * App User Class

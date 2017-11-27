@@ -1,5 +1,5 @@
 <?php 
-use Core\Router as Router;
+use Core\Router;
 /**
 * All routes must either be defined in this file or required in this file
 */

@@ -1,10 +1,10 @@
 <?php 
 namespace App\Controllers\Auth;
 
-use \Core\View;
-use \App\Models\User;
-use \Core\Auth;
-use \Core\Controller as BaseController;
+use Core\View;
+use App\Models\User;
+use Core\Auth;
+use Core\Controller as BaseController;
 
 /**
 * App Login Class

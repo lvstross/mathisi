@@ -1,9 +1,9 @@
 <?php 
 namespace App\Controllers\Auth;
 
-use \Core\View;
-use \App\Models\User;
-use \Core\Controller as BaseController;
+use Core\View;
+use App\Models\User;
+use Core\Controller as BaseController;
 
 /**
 * App Register Class

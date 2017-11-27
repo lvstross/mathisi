@@ -2,8 +2,8 @@
 namespace App\Models;
 
 use PDO;
-use \Core\Model as BaseModel;
-use \Core\QueryBuilder as QB;
+use Core\Model as BaseModel;
+use Core\QueryBuilder as QB;
 
 class Post extends BaseModel
 {

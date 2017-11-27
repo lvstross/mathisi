@@ -1,7 +1,7 @@
 <?php
 namespace Core;
 
-use \Core\Auth;
+use Core\Auth;
 
 /**
 * Base Controller
