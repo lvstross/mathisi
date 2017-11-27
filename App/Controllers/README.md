@@ -162,4 +162,4 @@ class Posts extends Authenticated
 ```
 
 ### Routing and Controllers in sub-folder
-See the (Routing)(https://github.com/lvstross/mvc-framework/tree/master/Routes#controllers-in-sub-folders) documentation for routing to controllers placed in sub-folders.
+See the [Routing](https://github.com/lvstross/mvc-framework/tree/master/Routes#controllers-in-sub-folders) documentation for routing to controllers placed in sub-folders.
