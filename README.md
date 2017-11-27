@@ -39,4 +39,4 @@ The example application that comes with the fraemwork will help get you started 
 ```
 
 <h1 align="center">Documentation</h1>
-1. [Routing](https://github.com/lvstross/mvc-framework/tree/master/Routes)
+[~ Routing](https://github.com/lvstross/mvc-framework/tree/master/Routes)
