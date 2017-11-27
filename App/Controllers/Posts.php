@@ -1,19 +1,19 @@
 <?php
 namespace App\Controllers;
 
-
 use App\Models\Post;
+use App\Controllers\Auth\Authenticated;
 use \Core\View;
 use \Core\Mail;
-use \Core\Controller as BaseController;
+use \Core\Auth;
 
-class Posts extends BaseController
+class Posts extends Authenticated
 {
     /**
     * Show the index page
     * @return void
     */
-    public function index()
+    public function indexAction()
     {
         $posts = Post::getAll();
         View::renderTemplate('Posts/index.html', [
@@ -25,7 +25,7 @@ class Posts extends BaseController
     * Add a new post
     * @return void
     */
-    public function store()
+    public function storeAction()
     {   
         $result = Post::addPost();
         View::renderTemplate('Posts/index.html', [
@@ -37,7 +37,7 @@ class Posts extends BaseController
     * API Route for getting the posts
     * @return json
     */
-    public function all()
+    public function allAction()
     {
         $results = Post::getAll();
         echo json_encode($results);

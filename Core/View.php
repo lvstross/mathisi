@@ -5,7 +5,7 @@ use \Twig_Environment as twig_env;
 use \Twig_Loader_filesystem as twig_system;
 
 /**
-* View Class
+* Core View Class
 */
 class View
 {
@@ -40,6 +40,9 @@ class View
         if($twig === null) {
             $loader = new twig_system('../App/Views');
             $twig = new twig_env($loader);
+            if(isset($_SESSION['id'])){
+                $twig->addGlobal('user', \Core\Auth::getUser());
+            }
         }
         echo $twig->render($template, $args);
     }

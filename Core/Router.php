@@ -1,7 +1,9 @@
 <?php
-
 namespace Core;
 
+/**
+* Core Router Class
+*/
 class Router
 {
     /**
@@ -116,7 +118,7 @@ class Router
                 throw new \Exception("Controller class $controller not found");
             }
         } else {
-            throw new \Exception("No route matches '$url'.", 404);
+            View::renderTemplate('404.html');
         }
     }
 

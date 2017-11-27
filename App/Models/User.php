@@ -2,9 +2,15 @@
 namespace App\Models;
 
 use PDO;
+use \Core\Auth;
 use \Core\Model as BaseModel;
 use \Core\QueryBuilder as QB;
 
+/**
+* App User Class
+* 
+* Apart of the authentication system
+*/
 class User extends BaseModel
 {
     /**
@@ -102,6 +108,23 @@ class User extends BaseModel
     }
 
     /**
+    * Check for email uniqeness in the database
+    *
+    * @param String
+    * @return Boolean
+    */
+    public static function findById($id)
+    {
+        $_id = "'".$id."'";
+        $qb = new QB;
+        $qb->conn = static::getDB();
+        $results = $qb->select('users', '*')
+           ->where('id', '=', $_id)
+           ->all();
+        return $results;
+    }
+
+    /**
     * Authenticate user
     *
     * @return void
@@ -117,6 +140,7 @@ class User extends BaseModel
                       ->all();
         if(count($results) > 0){
             if(password_verify($this->password, $results[0]['password_hash'])){
+                Auth::setUserId($results[0]['id']);
                 return true;
             }else{
                 $this->errors[] = "Your password does not match your email.";

@@ -1,7 +1,7 @@
 <?php
 namespace Core;
 
-use \Core\Mail;
+use \Core\Auth;
 
 /**
 * Base Controller
@@ -26,15 +26,32 @@ abstract class Controller
     }
 
     /**
+    * Before filter - called before an action method.
+    *
+    * @return void
+    */
+    protected function before()
+    {
+    }
+
+    /**
+    * After filter - called after an action method.
+    *
+    * @return void
+    */
+    protected function after()
+    {   
+    }
+
+    /**
     * calling before and after methods on every controller that declares them
     * 
     */
     public function __call($name, $args)
     {
         $method = $name . 'Action';
-
         if (method_exists($this, $method)) {
-            if ($this->before() !== false) {
+            if ($this->before() != false) {
                 call_user_func_array([$this, $method], $args);
                 $this->after();
             }
@@ -55,21 +72,29 @@ abstract class Controller
     }
 
     /**
-    * Before filter - called before an action method.
+    * Check it user is authenticated
     *
     * @return void
     */
-    protected function before()
+    public function middleware()
     {
+        Auth::rememberRequestedPage();
+        if(Auth::getUser()){
+            return;
+        }
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . "/login", true, 303);
+        exit;
     }
 
     /**
-    * After filter - called after an action method.
+    * Redirect to a different page
     *
+    * @param string $url The relative URL
     * @return void
     */
-    protected function after()
-    {   
+    public function redirect($url)
+    {
+        header("Location: http://" . $_SERVER['HTTP_HOST'] . $url, true, 303);
+        exit;
     }
-
 }
