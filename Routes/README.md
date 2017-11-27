@@ -3,7 +3,7 @@ All of your routes are handled in the 'Routes/routes.php' file.
 
 ```php
 <?php 
-use Core\Router as Router;
+use Core\Router;
 $router = new Router();
 
 // your routes here
