@@ -79,7 +79,7 @@ By default, the router assumes that all of your controllers live in the 'App/Con
 If you wish to place controllers in sub-folders in the 'App/Controllers' directory, you can add an additional
 __namespace__ key in your associative array. Be sure to add this namespace name at the top of the controller that
 you've made in a sub-folder. This rule continues to apply the more you nest your controller files. The routing engine adds on 
-'App/Controllers' in from of whatever namespace you create
+'App/Controllers' in front of whatever namespace you created.
 
 ##### File
 ```php
