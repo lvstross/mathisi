@@ -5,6 +5,11 @@ use \Core\View;
 use \App\Models\User;
 use \Core\Controller as BaseController;
 
+/**
+* App Register Class
+* 
+* Apart of the authentication system
+*/
 class Register extends BaseController
 {
     /**
@@ -26,8 +31,7 @@ class Register extends BaseController
     {
         $user = new User($_POST);
         if($user->save()){
-            header('Location: http://' . $_SERVER['HTTP_HOST'] . '/register/success', true, 303);
-            exit;
+            $this->redirect('/register/success');
         } else {
             View::renderTemplate('Auth/register.html', [
                 'user' => $user
