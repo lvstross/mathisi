@@ -38,5 +38,5 @@ The example application that comes with the fraemwork will help get you started 
 ~ composer install
 ```
 
-<h1 align="center">Documentation</h1>
-[~ Routing](https://github.com/lvstross/mvc-framework/tree/master/Routes)
+## Documentation
+1. [Routing](https://github.com/lvstross/mvc-framework/tree/master/Routes)
