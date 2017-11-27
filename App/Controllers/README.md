@@ -127,7 +127,7 @@ class Posts extends BaseController
 ### AuthController
 The AuthController is for when all methods in your controller require authentication before being 
 called. This controller class contains all the previously metioned methods in the BaseController. All 
-this controller simply allows you to do so call methods without having to declare the 'middleware' method 
+this controller simply allows you to do is call methods without having to declare the 'middleware' method 
 everytime. An AuthController can be created like so.
 
 ```php
