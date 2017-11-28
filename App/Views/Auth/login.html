@@ -23,6 +23,10 @@
                 <label for="password">Password:</label>
                 <input id="password" type="password" name="password">
             </div>
+            <div>
+                <label id="checkbox-label" for="remember_me">Remember Me</label>
+                <input class="checkbox" type="checkbox" name="remember_me" {% if remember_me %} checked="checked" {% endif %} />
+            </div>
             <button class="auth-btn" type="submit">Login</button>
         </form>
     </div>
