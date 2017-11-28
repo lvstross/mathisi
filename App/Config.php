@@ -38,4 +38,25 @@ class Config
     * @var boolean
     */
     const SHOW_ERRORS = true;
+
+    /**
+    * Secret Hash Token
+    * @var string
+    */
+    const SECRET = 'xtEL0dsw0PYTFwi0yTmbSXEpOXSdBRNc';
+
+    /**
+    * PHPmailer settings
+    *
+    * @var array
+    */
+    const MAIL_SETTINGS = [
+        "HOST" => "",
+        "USERNAME" => "",
+        "PASSWORD" => "",
+        "FROM_ADDRESS" => "",
+        "FROM_NAME" => "",
+        "REPLY_TO" => "",
+        "REPLY_TO_NAME" => ""
+    ];
 }
