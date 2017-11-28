@@ -2,7 +2,7 @@
 namespace Core;
 
 use Core\Auth;
-
+use Core\Flash;
 /**
 * Base Controller
 */
@@ -78,6 +78,7 @@ abstract class Controller
     */
     public function middleware()
     {
+        Flash::addMessage('Please login to access this page.', Flash::INFO);
         Auth::rememberRequestedPage();
         if(Auth::getUser()){
             return;
