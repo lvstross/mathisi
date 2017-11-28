@@ -3,7 +3,7 @@ namespace Core;
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-use Core\Config as Config;
+use App\Config;
 
 class Mail
 {
