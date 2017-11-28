@@ -29,6 +29,27 @@ body {
     border-radius:10px;
     padding:10px;
 }
+.alert {
+    width: 60%;
+    text-align: center;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 0 auto;
+}
+.alert-success {
+    background: #5add61;
+    color: #fff;
+}
+.alert-warning {
+    background: #ea7475;
+    color: #fff;
+}
+.alert-info {
+    background: #dbc734;
+}
+.alert-default {
+    background: #d8d8d8;
+}
 .error-h2 {
     font-size:60px;
     margin:0;
@@ -63,6 +84,9 @@ body {
 .error-message {
     background: #ed8080;
     width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    color: #fff;
 }
 .form {
     width: 60%;
@@ -83,6 +107,12 @@ input {
     font-size: 16px;
     margin-top: 5px;
     margin-bottom: 15px;
+}
+#checkbox-label {
+    display: inline;
+}
+.checkbox {
+    width: 20px;
 }
 .auth-btn {
     width: 100%;
