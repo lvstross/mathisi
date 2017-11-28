@@ -4,20 +4,21 @@ Work in progress
 Folder Structure
 ```bash
 root/ -- App/ -- Controllers/ -- Auth
-      |      |__ Models/
+      |      |__ Models/ -- Auth
       |      |__ Views/ -- Auth
       |      |__ Config.php
       |
       |_ Bootstrap/-- bootstrap.php
       |
-      |_ Core/-- Controller.php
-      |      |__ Auth.php
+      |_ Core/-- Auth.php
+      |      |__ Controller.php
       |      |__ Error.php
+      |      |__ Flash.php
       |      |__ Mail.php
-      |      |__ Config.php
       |      |__ Model.php
       |      |__ QueryBuilder.php
       |      |__ Router.php
+      |      |__ Token.php
       |      |__ View.php
       |
       |_ public/ -- index.php
