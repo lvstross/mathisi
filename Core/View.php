@@ -40,6 +40,7 @@ class View
         if($twig === null) {
             $loader = new twig_system('../App/Views');
             $twig = new twig_env($loader);
+            $twig->addGlobal('flash', \Core\Flash::getMessages());
             if(isset($_SESSION['id'])){
                 $twig->addGlobal('user', \Core\Auth::getUser());
             }
