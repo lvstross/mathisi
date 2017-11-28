@@ -313,7 +313,15 @@ class QueryBuilder
         try{
             $stm = $this->conn->prepare($this->query);
             for($i=0;$i<count($this->prepValues);$i++){
-                $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i]);
+                if(gettype($this->prepValues[$i]) === 'string'){
+                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], PDO::PARAM_STR);    
+                }else if (gettype($this->prepValues[$i]) === 'integer'){
+                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], PDO::PARAM_INT);
+                }else if (gettype($this->prepValues[$i]) === 'boolean'){
+                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], PDO::PARAM_BOOL);
+                }else{
+                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i]);
+                }
             }
             $stm->execute();
             return "Store Success!!";
