@@ -1,7 +1,8 @@
 <?php
 namespace Core;
 
-use App\Models\User;
+use App\Models\Auth\User;
+use App\Models\Auth\RememberLogin;
 
 class Auth
 {
@@ -32,6 +33,7 @@ class Auth
             );
         }
         session_destroy();
+        static::forgetLogin();
     }
 
     /**
@@ -66,6 +68,43 @@ class Auth
     {
         if(isset($_SESSION["id"])){
             return User::findById($_SESSION['id']);
+        } else {
+            return static::loginFromRememberCookie();
+        }
+    }
+
+    /**
+    * Login the user from the cookie if there is one
+    *
+    * @return mixed. The user model if login cookie found: null otherwise
+    */
+    public static function loginFromRememberCookie()
+    {
+        $cookie = $_COOKIE['remember_me'] ?? false;
+        if($cookie){
+            $remember_login = RememberLogin::findByToken($cookie);
+            if($remember_login && !$remember_login->hasExpired()) {
+                $user = $remember_login->getUser();
+                static::setUserId($user[0]['id']);
+                return $user;
+            }
+        }
+    }
+
+    /**
+    * Forget the rememebered login, if present
+    *
+    * @return void
+    */
+    public static function forgetLogin()
+    {
+        $cookie = $_COOKIE['remember_me'] ?? false;
+        if($cookie){
+            $remember_login = RememberLogin::findByToken($cookie);
+            if($remember_login) {
+                $remember_login->delete();
+            }
+            setcookie('remember_me', '', time() - 3600000); // set to expire in the past
         }
     }
 }
