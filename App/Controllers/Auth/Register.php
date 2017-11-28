@@ -2,7 +2,7 @@
 namespace App\Controllers\Auth;
 
 use Core\View;
-use App\Models\User;
+use App\Models\Auth\User;
 use Core\Controller as BaseController;
 
 /**
