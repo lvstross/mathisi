@@ -1,4 +1,6 @@
 *.DS_Store
 vendor
 composer.lock
-Core/Config.php
+node_modules
+package-lock.json
+mix-manifest.json

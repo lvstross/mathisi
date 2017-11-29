@@ -1,3 +1,5 @@
+//Global Variables
+$black: #000;
 body {
     font-family: Helvetica, Georgia, sans serif;
 }
@@ -64,7 +66,7 @@ body {
 .home-h1 {
     text-align:center;
     color:#fff;
-    background-color:#000;
+    background-color: $black;
     margin-bottom:0px;
     border-radius:10px 10px 0 0;
     padding:10px;   

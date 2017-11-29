@@ -1,0 +1,172 @@
+body {
+  font-family: Helvetica, Georgia, sans serif;
+}
+
+.main {
+  width: 100%;
+}
+
+.code {
+  background: #25373f;
+  padding: 10px;
+  color: #fff;
+  overflow: scroll;
+}
+
+.line {
+  margin-right: 5px;
+  padding-right: 8px;
+}
+
+.light-blue {
+  color: #89ddff;
+}
+
+.red {
+  color: #c66c78;
+}
+
+.yellow {
+  color: #ffcb66;
+}
+
+.purple {
+  color: #af8dea;
+}
+
+.lime-green {
+  color: #a1e48d;
+}
+
+.ocean-blue {
+  color: #82aaf3;
+}
+
+.grey {
+  color: #506a77;
+}
+
+.error-h1 {
+  text-align: center;
+  color: #fff;
+  background-color: #dd4040;
+  margin-bottom: 0px;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.alert {
+  width: 60%;
+  text-align: center;
+  border-radius: 5px;
+  padding: 10px 20px;
+  margin: 0 auto;
+}
+
+.alert-success {
+  background: #5add61;
+  color: #fff;
+}
+
+.alert-warning {
+  background: #ea7475;
+  color: #fff;
+}
+
+.alert-info {
+  background: #dbc734;
+}
+
+.alert-default {
+  background: #d8d8d8;
+}
+
+.error-h2 {
+  font-size: 60px;
+  margin: 0;
+}
+
+.error-div {
+  background-color: #d6cfcf;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  padding: 20px;
+  margin-top: 0px;
+}
+
+.home-h1 {
+  text-align: center;
+  color: #fff;
+  background-color: #000;
+  margin-bottom: 0px;
+  border-radius: 10px 10px 0 0;
+  padding: 10px;
+}
+
+.home-div {
+  background-color: #d6cfcf;
+  border-radius: 0 0 10px 10px;
+  padding: 20px;
+  margin-top: 0px;
+}
+
+.banner {
+  background-color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px;
+}
+
+.error-message {
+  background: #ed8080;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.form {
+  width: 60%;
+  padding: 20px;
+  margin-top: 10px;
+  background-color: #ddd;
+  margin: 10px auto;
+  border-radius: 10px;
+}
+
+label {
+  display: block;
+}
+
+input {
+  width: 98%;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 5px;
+  font-size: 16px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+
+#checkbox-label {
+  display: inline;
+}
+
+.checkbox {
+  width: 20px;
+}
+
+.auth-btn {
+  width: 100%;
+  border: 1px solid #ddd;
+  font-size: 16px;
+  border-radius: 10px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+.auth-btn:hover {
+  background-color: #aaa;
+  color: #fff;
+}
+

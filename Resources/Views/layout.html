@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" type="text/css" href="/assets/styles.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/app.css">
 </head>
 <body>
     {% for message in flash %}
@@ -12,5 +12,6 @@
     {% endfor %}
     {% block body %}
     {% endblock %}
+    <script src="/assets/js/app.js"></script>
 </body>
 </html>
