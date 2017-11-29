@@ -18,7 +18,7 @@ class View
     public static function render($view, $args=[])
     {
         extract($args, EXTR_SKIP);
-        $file = "../App/Views/$view"; // relative to Core directory
+        $file = dirname(__DIR__) . "/Resources/Views/$view";
         if (is_readable($file)) {
             require $file;
         } else {
@@ -38,7 +38,7 @@ class View
     {
         static $twig = null;
         if($twig === null) {
-            $loader = new twig_system('../App/Views');
+            $loader = new twig_system(dirname(__DIR__) . '/Resources/Views');
             $twig = new twig_env($loader);
             $twig->addGlobal('flash', \Core\Flash::getMessages());
             if(isset($_SESSION['id'])){
