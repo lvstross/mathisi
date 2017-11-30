@@ -46,4 +46,16 @@ class Token
     {
         return hash_hmac('sha256', $this->token, \App\Config::SECRET);
     }
+
+    /**
+    * Get Session id
+    *
+    * @return string Session id from Cookie super global
+    */
+    public static function getCsrfToken()
+    {
+        if(isset($_COOKIE['PHPSESSID'])){
+            return $_COOKIE['PHPSESSID'];
+        }
+    }
 }
