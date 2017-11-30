@@ -41,6 +41,7 @@ class View
             $loader = new twig_system(dirname(__DIR__) . '/Resources/Views');
             $twig = new twig_env($loader);
             $twig->addGlobal('flash', \Core\Flash::getMessages());
+            $twig->addGlobal('csrf_token', \Core\Token::getCsrfToken());
             if(isset($_SESSION['id'])){
                 $twig->addGlobal('user', \Core\Auth::getUser());
             }
