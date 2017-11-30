@@ -12,4 +12,7 @@ const app = (
     </BrowserRouter>
 );
 
-ReactDOM.render(app, document.getElementById('root'));
+let el = document.getElementById('root');
+if(el){
+    ReactDOM.render(app, document.getElementById('root'));
+}
