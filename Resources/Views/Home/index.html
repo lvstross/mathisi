@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 {% block body %}
     {% if user[0]['id'] %}
-        <h1 class="home-h1">Welcome to the Home Page</h1>
+        <h1 class="home-h1">{{ message }}</h1>
         <div class="home-div">
             <p align="center">User with ID: {{ user[0]['id'] }} is logged in. <a href="/login/logout">Log out</a></p>
             <p align="center">{{ user[0]['name'] }}</p>
