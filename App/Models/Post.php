@@ -14,18 +14,24 @@ class Post extends BaseModel
     */
     public static function getAll()
     {
-        $qb = new QB;
-        $qb->conn = static::getDB();
-        return $qb->select('posts', '*')->all();
+        
+        // You can interact with your database either by the query builder
+        // $qb = new QB;
+        // $qb->conn = Post::getDB();
+        // return $qb->select('posts', '*')->all();
+
+        // or with the quick model methods
+        // return Post::all('posts');
     } 
+
 
     public static function addPost()
     {
-        $qb = new QB;
-        $qb->conn = static::getDB();
-        $columns = ['title', 'content'];
-        $values = ['Ravens', 'They eat anything!'];
+        // $qb = new QB;
+        // $qb->conn = Post::getDB();
+        // $columns = ['title', 'content'];
+        // $values = ['Ravens', 'They eat anything!'];
 
-        return $qb->insert('posts', $columns, $values);
+        // return $qb->insert('posts', $columns, $values);
     }
 }
