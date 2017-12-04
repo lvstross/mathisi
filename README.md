@@ -23,10 +23,16 @@ root/ -- App/ -- Controllers/ -- Auth
       |
       |_ public/ -- index.php
       |        |__ assets
+      |_ Resources/ --_globals.php
+      |           |_ views
+      |           |_ assets/ - js/
+      |                    |_ sass/
       |_ Routes/ -- routes.php
       |_ composer.json
       |_ db.sql
+      |_ package.json
       |_ README.md
+      |_ webpack.mix.js
 ```
 
 ## Set Up
