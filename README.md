@@ -40,5 +40,6 @@ The example application that comes with the fraemwork will help get you started 
 ```
 
 ## Documentation
-1. [Routing](https://github.com/lvstross/mvc-framework/tree/master/Routes)
-2. [Controllers](https://github.com/lvstross/mvc-framework/tree/master/App/Controllers)
+1. [Routing](https://github.com/lvstross/mvc-framework/tree/master/routes)
+2. [Controllers](https://github.com/lvstross/mvc-framework/tree/master/app/controllers)
+3. [Resources](https://github.com/lvstross/mvc-framework/tree/master/resources)

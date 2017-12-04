@@ -1,3 +1,0 @@
-## Views
-
-Documentation coming soon
