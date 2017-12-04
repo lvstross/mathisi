@@ -37,6 +37,7 @@ The example application that comes with the fraemwork will help get you started 
 3. Run Composer 
 ```bash
 ~ composer install
+~ npm install
 ```
 
 ## Documentation
