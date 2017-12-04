@@ -4,3 +4,7 @@ composer.lock
 node_modules
 package-lock.json
 mix-manifest.json
+public/assets/css/app.css
+public/assets/css/index.js
+fonts
+logs
