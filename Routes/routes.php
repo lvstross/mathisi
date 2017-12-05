@@ -13,12 +13,6 @@ $router = new Router();
 $router->add('/', ['controller' => 'Home', 'action' => 'index']);
 $router->add('/docs', ['controller' => 'Home', 'action' => 'docs']);
 
-
-/**
-* Routes defined for default app
-*/
-require 'post_routes.php';
-
 /**
 * Routes defined for authentication system
 */
