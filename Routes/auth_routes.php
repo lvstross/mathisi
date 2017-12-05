@@ -36,7 +36,7 @@ $router->add('/login/login', [
     'namespace' => 'auth'
 ]);
 // Log the user out
-$router->add('/login/logout', [
+$router->add('/logout', [
     'controller' => 'login',
     'action' => 'logout',
     'namespace' => 'auth'
