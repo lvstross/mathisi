@@ -58,9 +58,9 @@ root/ -- App/ -- Controllers/ -- Auth
 ```
 
 ## Set Up
-1. import or run the /db.sql file in your database to set up the default app.
+1. import or run the /db.sql file in your database to set up the authentication tables if authentications is desired.
 2. Change the database configurations in the 'App/Config.php' file.
-3. Run Composer 
+3. Run Composer and NPM
 ```bash
 ~ composer install
 ~ npm install
@@ -70,3 +70,5 @@ root/ -- App/ -- Controllers/ -- Auth
 1. [Routing](https://github.com/lvstross/mvc-framework/tree/master/Routes)
 2. [Controllers](https://github.com/lvstross/mvc-framework/tree/master/App/Controllers)
 3. [Resources](https://github.com/lvstross/mvc-framework/tree/master/Resources)
+
+More docs coming soon
