@@ -1,6 +1,7 @@
-<h1 align="center">PHP MVC Framework</h1>
+<h1 align="center">Máthisi</h1>
+<h2 align="center">PHP MVC Framework</h2>
+<hr />
 Work in progress
-
 Folder Structure
 ```bash
 root/ -- App/ -- Controllers/ -- Auth
