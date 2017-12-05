@@ -1,7 +1,28 @@
 <h1 align="center">Máthisi</h1>
 <h2 align="center">PHP MVC Framework</h2>
 <hr />
-Work in progress
+
+## What does this framework come with?
+
+As of the most recent commit this framework comes with the following perks:
+1. Symphony Twig Support
+2. Full MVC Pattern
+3. Regex Routing
+4. Query Builder
+5. Authentication System
+6. CSRF Protection
+7. Basic Middleware
+8. Flash Notifications
+9. PhpMailer Support
+10. Full assets compilation with Laravel Mix
+11. Reactjs
+12. Boostrap
+13. jQuery
+14. Axios for ajax requests
+15. Error logging
+
+This framework is a work in progress. Feel free to fork it and make any improvments.
+
 Folder Structure
 ```bash
 root/ -- App/ -- Controllers/ -- Auth
