@@ -5,6 +5,6 @@ node_modules
 package-lock.json
 mix-manifest.json
 public/assets/css/app.css
-public/assets/css/index.js
+public/assets/js/index.js
 fonts
 logs
