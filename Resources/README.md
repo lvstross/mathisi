@@ -63,3 +63,8 @@ return [
 
 The assets folder has the same use case as seen in Laravel. This is were you would place any javascript and sass to be compiled into your project. 
 If you have used Laravel Mix before, feel right at home. If you are new to Laravel Mix, see the documentation [here](https://laravel.com/docs/5.5/mix).
+
+#### Csrf-Tokens
+
+By default, the framework provides csrf-tokens for authorizing ajax requests coming intot he application. These tokens are automaticlly loaded with 
+axios. AuthControllers and middleware currently don't reject entry. This functionality is coming soon. 

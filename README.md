@@ -36,8 +36,6 @@ root/ -- App/ -- Controllers/ -- Auth
 ```
 
 ## Set Up
-The example application that comes with the fraemwork will help get you started in understanding how it works.
-
 1. import or run the /db.sql file in your database to set up the default app.
 2. Change the database configurations in the 'App/Config.php' file.
 3. Run Composer 
