@@ -17,6 +17,9 @@ class Error
     public static function errorHandler($level, $messagae, $file, $line)
     {
         if (error_reporting() !== 0) { // to keep the @ operator working
+            if(!isset($message)){
+                $message = "No message given";
+            }
             throw new \ErrorException($message, 0, $level, $file, $line);
         }
     }
@@ -36,8 +39,8 @@ class Error
             $code = 500;
         }
         http_response_code($code);
-
-        if(\App\Config::SHOW_ERRORS){
+        $error_status = getenv('SHOW_ERRORS');
+        if($error_status){
             echo "<h1 style='text-align:center;color:#fff;background-color:#dd4040;margin-bottom:0px;border-radius:10px 10px 0 0;'>Fatal error</h1>";
             echo "<div style='background-color:#d6cfcf;border-radius:0 0 10px 10px;padding:20px;margin-top:0px;'>";
             echo "<p><strong>Uncaught exception:</strong> '" . get_class($exception) . "'</p>";

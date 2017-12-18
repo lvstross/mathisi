@@ -2,10 +2,10 @@
 -- SQL for sample database
 -- -------------------------------------------------------
 
-CREATE DATABASE mvc;
+CREATE DATABASE mathisi;
 
 -- Auth System Users Table
-CREATE TABLE mvc.users (
+CREATE TABLE mathisi.users (
     id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(50) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
@@ -13,7 +13,7 @@ CREATE TABLE mvc.users (
     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 -- Auth System Remeber Tokens Table
-CREATE TABLE mvc.remember_tokens (
+CREATE TABLE mathisi.remember_tokens (
     token_hash VARCHAR(64) PRIMARY KEY,
     user_id INT NOT NULL,
     expires_at DATETIME,
