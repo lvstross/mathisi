@@ -8,3 +8,4 @@ public/assets/css/app.css
 public/assets/js/index.js
 fonts
 logs
+.env
