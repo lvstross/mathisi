@@ -1,8 +1,25 @@
-# Remove index.php from the request but maintain the query string
+# Removes index.php from the request but maintain the query string. This also servers up the application
+# through the index.php page on every request. This block is for normal HTTP connection.
+# For forced HTTPS redirect connection, comment out the next 5 lines of code and uncomment the "HTTPS Redirect" block.
+
+#########################
+# HTTP Index Root Block #
+#########################
 RewriteEngine On
-
 RewriteBase /
-
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^(.*)$ index.php?$1 [L,QSA]
+
+
+########################
+# HTTPS REDIRECT BLOCK #
+########################
+#RewriteEngine On
+#RewriteCond %{SERVER_PORT} !^443$
+#RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+#RewriteBase /
+#RewriteRule ^index\.php$ - [L]
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule . /index.php [L]
