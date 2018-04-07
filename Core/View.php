@@ -2,7 +2,7 @@
 namespace Core;
 
 use \Twig_Environment as twig_env;
-use \Twig_Loader_filesystem as twig_system;
+use \Twig_Loader_Filesystem as twig_system;
 
 /**
 * Core View Class
@@ -38,12 +38,12 @@ class View
     {
         static $twig = null;
         if($twig === null) {
-            $loader = new twig_system(dirname(__DIR__) . '/resources/Views');
+            $loader = new twig_system(dirname(__DIR__) . '/Resources/Views');
             $twig = new twig_env($loader);
             $twig->addGlobal('flash', \Core\Flash::getMessages());
             $twig->addGlobal('csrf_token', \Core\Token::getCsrfToken());
             /* Set any global variables set in the _globals file */
-            $globals = require(dirname(__DIR__).'/resources/views/_globals.php');
+            $globals = require(dirname(__DIR__).'/Resources/Views/_globals.php');
             foreach($globals as $key => $value){
                 $twig->addGlobal($key, $value);
             }
