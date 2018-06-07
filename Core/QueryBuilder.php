@@ -1,5 +1,6 @@
 <?php 
 namespace Core;
+
 use PDO;
 
 /**
@@ -17,7 +18,7 @@ class QueryBuilder
     * Database connection
     * @var PDO instace
     */
-    public $conn;
+    private $conn;
 
     /**
     * Values to be stored for preparted statments
@@ -30,6 +31,15 @@ class QueryBuilder
     * @var Array
     */
     protected $prepPlaceHolders = [];
+
+    /**
+    * Dependencys
+    *
+    */
+    public function __construct(PDO $pdo)
+    {
+        $this->conn = $pdo;
+    }
 
     /**
     * Raw Query 
@@ -45,10 +55,10 @@ class QueryBuilder
             try{
                 $this->query = $str;
                 $stm = $this->conn->query($this->query);
-                $results = $stm->fetchAll(PDO::FETCH_ASSOC);
+                $results = $stm->fetchAll($this->conn::FETCH_ASSOC);
                 return $results;
             } catch (PDOException $e) {
-                echo $e->getMessage();
+                throw new Exception($e->getMessage());
             }
         }
     }
@@ -296,10 +306,10 @@ class QueryBuilder
     {
         try{
             $stm = $this->conn->query($this->query);
-            $results = $stm->fetchAll(PDO::FETCH_ASSOC);
+            $results = $stm->fetchAll($this->conn::FETCH_ASSOC);
             return $results;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            throw new Exception($e->getMessage());
         }
     }
 
@@ -314,11 +324,11 @@ class QueryBuilder
             $stm = $this->conn->prepare($this->query);
             for($i=0;$i<count($this->prepValues);$i++){
                 if(gettype($this->prepValues[$i]) === 'string'){
-                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], PDO::PARAM_STR);    
+                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], $this->conn::PARAM_STR);    
                 }else if (gettype($this->prepValues[$i]) === 'integer'){
-                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], PDO::PARAM_INT);
+                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], $this->conn::PARAM_INT);
                 }else if (gettype($this->prepValues[$i]) === 'boolean'){
-                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], PDO::PARAM_BOOL);
+                    $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i], $this->conn::PARAM_BOOL);
                 }else{
                     $stm->bindParam($this->prepPlaceHolders[$i], $this->prepValues[$i]);
                 }
@@ -326,7 +336,7 @@ class QueryBuilder
             $stm->execute();
             return "Store Success!!";
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            throw new Exception($e->getMessage());
         }
     }
 
